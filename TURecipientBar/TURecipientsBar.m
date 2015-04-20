@@ -170,7 +170,12 @@ void *TURecipientsSelectionContext = &TURecipientsSelectionContext;
         NSMutableString *summary = [[NSMutableString alloc] init];
         
         for (id<TURecipient>recipient in _recipients) {
-            [summary appendString:recipient.recipientTitle];
+            [summary appendString:[recipient.recipientTitle stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
+            
+            //remove commas so we don't have double
+            if([summary hasSuffix:@","]) {
+                [summary deleteCharactersInRange:NSMakeRange(summary.length - 1, 1)];
+            }
             
             if (recipient != [_recipients lastObject]) {
                 [summary appendString:@", "];

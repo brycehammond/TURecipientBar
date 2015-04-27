@@ -560,10 +560,13 @@ void *TURecipientsSelectionContext = &TURecipientsSelectionContext;
     }
     
     if (_textField.isFirstResponder && !self.searching) {
-		self.heightConstraint.constant = self.contentSize.height;
-	} else {
-		self.heightConstraint.constant = TURecipientsLineHeight + 1.0;
-	}
+        self.heightConstraint.constant = self.contentSize.height;
+        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, MIN(self.contentSize.height, TURecipientsLineHeight * 3 + 1.0));
+        
+    } else {
+        self.heightConstraint.constant = TURecipientsLineHeight + 1.0;
+        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, MIN(self.contentSize.height, TURecipientsLineHeight + 1.0));
+    }
     
     if (_searching) {
 		[self _scrollToBottomAnimated:NO];

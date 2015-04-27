@@ -897,6 +897,26 @@ void *TURecipientsSelectionContext = &TURecipientsSelectionContext;
     return backgroundImage;
 }
 
+- (void)setAddButtonImage:(UIImage *)addButtonImage forState:(UIControlState)state UI_APPEARANCE_SELECTOR
+{
+    
+    if(_addButton.buttonType == UIButtonTypeContactAdd) {
+        //switch to image style button
+        CGFloat currentAlpha = _addButton.alpha;
+        [_addButton removeFromSuperview];
+        _addButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _addButton.alpha = currentAlpha;
+        [_addButton addTarget:self action:@selector(addContact:) forControlEvents:UIControlEventTouchUpInside];
+        
+        if(self.showsAddButton) {
+            [self addSubview:_addButton];
+        }
+        [self setNeedsLayout];
+    }
+    
+    [_addButton setImage:addButtonImage forState:state];
+}
+
 - (void)setRecipientContentEdgeInsets:(UIEdgeInsets)recipientContentEdgeInsets
 {
     _recipientContentEdgeInsets = recipientContentEdgeInsets;

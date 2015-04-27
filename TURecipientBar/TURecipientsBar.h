@@ -217,6 +217,16 @@
  */
 - (NSDictionary *)recipientTitleTextAttributesForState:(UIControlState)state UI_APPEARANCE_SELECTOR;
 
+/** Sets the image for the add button in a given state.
+ 
+ Note that by default, the add button is the standard contact add button type and this will override it to use
+    an image
+ 
+ @param addButtonImage The image to use.
+ @param state The state to use this image in.
+ */
+- (void)setAddButtonImage:(UIImage *)addButtonImage forState:(UIControlState)state UI_APPEARANCE_SELECTOR;
+
 /** The text attributes applied to the label.
  */
 @property (nonatomic, copy) NSDictionary *labelTextAttributes UI_APPEARANCE_SELECTOR;

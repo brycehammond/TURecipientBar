@@ -258,6 +258,17 @@ void *TURecipientsSelectionContext = &TURecipientsSelectionContext;
 	[self updateShadows];
 }
 
+- (void)setShowsBottomLine:(BOOL)showsBottomLine
+{
+    _showsBottomLine = showsBottomLine;
+    
+    if(_showsBottomLine) {
+        [self addSubview:_lineView];
+    } else {
+        [_lineView removeFromSuperview];
+    }
+}
+
 - (void)setText:(NSString *)text
 {
 	if (text != nil) {

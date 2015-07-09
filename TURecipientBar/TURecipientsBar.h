@@ -92,6 +92,11 @@
  */
 @property (nonatomic) BOOL showsShadows;
 
+/** Whether the bottom line view will be hidden.
+ 
+ */
+@property (nonatomic) BOOL showsBottomLine;
+
 /** Whether adding and removing recipients should be animated.
  
  Hint: they should. This is turned on by defualt.

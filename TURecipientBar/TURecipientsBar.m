@@ -563,7 +563,10 @@ void *TURecipientsSelectionContext = &TURecipientsSelectionContext;
         _addButton.frame = addButtonFrame;
     }
     
-    [_lineView.superview bringSubviewToFront:_lineView];
+    if(self.showsBottomLine) {
+        [_lineView.superview bringSubviewToFront:_lineView];
+    }
+    
     if (self.searching) {
         _lineView.frame = CGRectMake(0.0, self.contentSize.height - 1.0, self.bounds.size.width, 1.0);
     } else {
